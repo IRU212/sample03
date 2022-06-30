@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body .left {
+  width: 48vw;
+  height: 100vh;
+  background-color: #000;
+  text-align: center;
+}
+
+body .left img {
+  width: 48vw;
+  opacity: 0.5;
+}
+
+body .left .left-text {
+  color: #fff;
+  position: fixed;
+  left: 12vw;
+  top: 44vh;
+  font-size: 2.3rem;
+  height: 2vh;
+}
+
+body .right {
+  width: 50vw;
+  text-align: center;
+}
+
+body .right form {
+  margin-top: 16vh;
+}
+
+body .right form .main_form_text {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+body .right form .div_text {
+  font-size: 0.9rem;
+  margin: 1.5rem 0 0.7rem 0;
+}
+
+body .right form .aleady_text {
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+body .right form .aleady_text a {
+  text-decoration: none;
+  color: #555;
+}
+
+body .right form .forget_text {
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+body .right form .forget_text a {
+  text-decoration: none;
+  color: #555;
+}
+
+body .right form .input_checkbox {
+  margin-top: 1rem;
+}
+
+body .right form input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.1rem;
+}
+
+body .right form input input:active {
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+body .right form .input_submit {
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+  margin-left: 1rem;
+  background-color: #fff;
+}
+
+body .right .margin {
+  margin: 30vh auto 0 auto;
+  width: 50vw;
+}
+
+body .right .margin .ellips {
+  width: 20vw;
+  text-decoration: none;
+  color: #000;
+  background-color: #ccc;
+  padding: 1.5vw 10vh;
+  border-radius: 5vw;
+}
+/*# sourceMappingURL=login.css.map */
