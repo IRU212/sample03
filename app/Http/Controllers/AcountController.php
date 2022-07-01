@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 
 class AcountController extends Controller
 {
-    public function index(){
-        $id = auth()->id();
+    public function index($id){
         $icon_image = User::find($id)->get();
+        $information = $icon_image;
         $data = [
+            'information' => $information,
             'icon_image' => $icon_image
         ];
         return view('acount',$data);
