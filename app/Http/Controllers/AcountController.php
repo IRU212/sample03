@@ -2,17 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AcountController extends Controller
 {
-    public function index($id){
-        $icon_image = User::find($id)->get();
+    public function index(){
+
+        $id = auth()->id();
+        $icon_image = User::where('id',$id)->get();
         $information = $icon_image;
+
+        $posts = DB::table('users')
+        ->where('user_id',$id)
+        ->select('users.image as profile','posts.text as text','posts.image as image')
+        ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
+        ->orderBy('posts.created_at', 'desc')
+        ->get();
+
         $data = [
             'information' => $information,
-            'icon_image' => $icon_image
+            'icon_image' => $icon_image,
+            'posts' => $posts
         ];
         return view('acount',$data);
     }
@@ -56,5 +70,14 @@ class AcountController extends Controller
         $user->update($update);
 
         return redirect()->back();
+    }
+
+    public function confirm(Request $request){
+        $id = auth()->id();
+        $pass = User::find($id)->password;
+        $password = $request->password;
+        if(Hash::check($password, $pass)){
+            return redirect()->route('acount-index');
+        }
     }
 }

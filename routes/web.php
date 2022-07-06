@@ -2,19 +2,12 @@
 
 use App\Http\Controllers\AcountController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Logout;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +24,15 @@ Route::prefix('/acount/{id}')->group(function(){
     Route::get('/',[AcountController::class,'index'])->name('acount-index');
     Route::patch('/update',[AcountController::class,'update'])->name('acount-update');
 });
+
+Route::prefix('/search')->group(function(){
+    Route::get('/',[SearchController::class,'index'])->name('search-index');
+    Route::post('/',[SearchController::class,'index'])->name('search-index');
+    Route::get('/result',[SearchController::class,'search'])->name('search-search');
+});
+
+Route::get('/logout',[Logout::class,'logout'])->name('logout');
+Route::post('/confirm',[AcountController::class,'confirm'])->name('acount-confirm');
 
 Route::middleware([
     'auth:sanctum',

@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     public function index(Request $request){
+        $id = auth()->id();
 
         $posts = DB::table('users')
+        ->where('user_id',$id)
         ->select('users.image as profile','posts.text as text','posts.image as image')
         ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
         ->orderBy('posts.created_at', 'desc')
         ->get();
 
-        $id = auth()->id();
-        $icon_image = User::find($id)->get();
+        $icon_image = User::where('id',$id)->get();
 
         $data = [
             'icon_image' => $icon_image,
