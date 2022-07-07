@@ -13,19 +13,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home',[HomeController::class,'index'])->name('home-index');
+Route::get('/home',[HomeController::class,'index'])->name('home-index')->middleware(
+    [
+        'auth:sanctum',
+        config('jetstream.auth_session'),
+        'verified'
+    ]
+    );
 
-Route::prefix('/post')->group(function(){
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->prefix('/post')->group(function(){
     Route::get('/',[PostController::class,'index'])->name('post-index');
     Route::post('/create',[PostController::class,'create'])->name('post-create');
 });
 
-Route::prefix('/acount/{id}')->group(function(){
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->prefix('/acount/{id}')->group(function(){
     Route::get('/',[AcountController::class,'index'])->name('acount-index');
     Route::patch('/update',[AcountController::class,'update'])->name('acount-update');
 });
 
-Route::prefix('/search')->group(function(){
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->prefix('/search')->group(function(){
     Route::get('/',[SearchController::class,'index'])->name('search-index');
     Route::post('/',[SearchController::class,'index'])->name('search-index');
     Route::get('/result',[SearchController::class,'search'])->name('search-search');

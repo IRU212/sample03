@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     public function index(Request $request){
+
         $id = auth()->id();
 
         $posts = DB::table('users')
@@ -19,7 +20,8 @@ class PostController extends Controller
         ->orderBy('posts.created_at', 'desc')
         ->get();
 
-        $icon_image = User::where('id',$id)->get();
+        $image = User::where('id',$id)->get();
+        $icon_image = $image;
 
         $data = [
             'icon_image' => $icon_image,
@@ -30,6 +32,11 @@ class PostController extends Controller
     }
 
     public function create(Request $request){
+
+        // バリテージョン
+        $request->validate([
+           'text' => 'required|max:24',
+        ]);
 
         $id = auth()->id();
         $icon_image = User::find($id)->get();

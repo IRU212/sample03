@@ -115,6 +115,7 @@ body .post form .input_form .input_img {
   width: 15vh;
   height: 15vh;
   margin-top: 2vh;
+  cursor: pointer;
 }
 
 body .post form .input_form .input_submit {
@@ -395,6 +396,13 @@ body .search_box .search_results .search_image .img {
 
 body .search_box .search_results::-webkit-scrollbar {
   display: none;
+}
+
+body .error_font {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: red;
+  text-align: center;
 }
 
 body .modal-open {
