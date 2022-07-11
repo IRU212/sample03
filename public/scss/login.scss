@@ -80,11 +80,7 @@ body{
                     border: none;
                     border-bottom: 1px solid #ccc;
                     font-size: 1.1rem;
-    
-                    input:active{
-                        border: none;
-                        border-bottom: 1px solid #ccc;
-                    }
+                    outline: none;
                 }
 
                 .input_submit{

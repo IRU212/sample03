@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -27,15 +28,20 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        $image = '0';
-        $backimage = '0';
+        // $image = $request->image;
+
+        // $path = isset($image) ? $image->store('items', 'public') : '';
+
+        // $back_image = $request->back_image;
+
+        // $back_path = isset($back_image) ? $back_image->store('items', 'public') : '';
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'image' => $image,
-            'back_image' => $backimage,
+            'image' => 0,
+            'back_image' => 0,
         ]);
     }
 }

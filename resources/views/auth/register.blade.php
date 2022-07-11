@@ -26,6 +26,16 @@
                             <div class="div_text">emal</div>
                             <x-jet-input class="border_inpt" type="email" name="email" :value="old('email')" required />
                         </div>
+
+                        {{-- <div>
+                            <div class="div_text">icon</div>
+                            <div><input type="file" name="image" id=""></div>
+                        </div>
+
+                        <div>
+                            <div class="div_text">back-image</div>
+                            <div><input type="file" name="back_image" id=""></div>
+                        </div> --}}
             
                         <div class="mt-4">
                             <div class="div_text">password</div>

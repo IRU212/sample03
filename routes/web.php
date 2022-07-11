@@ -1,7 +1,9 @@
 <?php
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\AcountController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Logout;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
@@ -12,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/image',[ImageController::class,'index'])->name('image-index');
+// Route::post('/image/store',[ImageController::class,'store'])->name('image-store');
 
 Route::get('/home',[HomeController::class,'index'])->name('home-index')->middleware(
     [

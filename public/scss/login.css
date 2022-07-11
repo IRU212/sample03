@@ -82,11 +82,7 @@ body .right form input {
   border: none;
   border-bottom: 1px solid #ccc;
   font-size: 1.1rem;
-}
-
-body .right form input input:active {
-  border: none;
-  border-bottom: 1px solid #ccc;
+  outline: none;
 }
 
 body .right form .input_submit {
